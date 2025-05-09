@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+  <title>User Registration - GreenHarvest</title>
+ <link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>User Registration</h2>
+    <form id="registerForm">
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="fullname" required>
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <input type="submit" value="Register">
+    </form>
+
+    <div id="message"></div>
+
+    <div class="footer-note">
+      Already have an account? <a href="login.html">Login here</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const fullname = document.getElementById("fullname").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const messageBox = document.getElementById("message");
+
+      if (!fullname || !email || !username || !password) {
+        messageBox.textContent = "❌ Please fill in all fields.";
+        messageBox.className = "error";
+      } else if (!email.includes("@") || !email.includes(".")) {
+        messageBox.textContent = "❌ Enter a valid email address.";
+        messageBox.className = "error";
+      } else if (password.length < 6) {
+        messageBox.textContent = "❌ Password must be at least 6 characters.";
+        messageBox.className = "error";
+      } else {
+        messageBox.textContent = "✅ Registration successful!";
+        messageBox.className = "success";
+        document.getElementById("registerForm").reset();
+      }
+    });
+  </script>
+
+</body>
+</html>

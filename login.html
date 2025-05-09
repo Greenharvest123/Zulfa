@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+  <title>User Login - GreenHarvest</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="container">
+    <h2>User Login</h2>
+    <form id="loginForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <input type="submit" value="Login">
+    </form>
+
+    <div id="loginMessage"></div>
+
+    <div class="footer-note">
+      Don't have an account? <a href="register.html" target="contentFrame">Register here</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const messageBox = document.getElementById("loginMessage");
+
+      // Replace these with real validation logic or data from localStorage
+      const validUser = "user123";
+      const validPass = "pass123";
+
+      if (username === validUser && password === validPass) {
+        messageBox.textContent = "✅ Login successful!";
+        messageBox.className = "success";
+      } else {
+        messageBox.textContent = "❌ Incorrect credentials, try again.";
+        messageBox.className = "error";
+      }
+    });
+  </script>
+
+</body>
+</html>
